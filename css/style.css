@@ -1,0 +1,458 @@
+    /*-----------------FONTS LINK----------- */
+    
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+    /* -----------CUSTOM PROPERTIES----------------------------------- */
+    
+     :root {
+        --ff-primary: 'Poppins', sans-serif;
+        --color-white: #ffffff;
+        --color-dark: #303030;
+        --color-black: #111111;
+        --main-color: #F4D800;
+        --second-color: #ff8370;
+        --fs-h1: 3rem;
+        --fs-h2: 2.25rem;
+        --fs-h3: 1.25rem;
+        --fs-body: 1rem;
+        --fw-reg: 300;
+        --fw-semibold: 500;
+        --fw-bold: 700;
+        --default-lh: 1.6;
+        --boxShadow: 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.25), 0.125em 0.125em 0.15em rgba(0, 0, 0, 0.15);
+    }
+    
+    @media (min-width:800px) {
+         :root {
+            --fs-h1: 4rem;
+            --fs-h2: 3.375rem;
+            --fs-h3: 1.5rem;
+            --fs-body: 1.125rem;
+        }
+    }
+    /* -----------------GENERAL PROPERTIES--------------------------------------- */
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    body {
+        background-color: var(--color-white);
+        color: var(--color-dark);
+        font-family: var(--ff-primary);
+        font-size: var(--fs-body);
+        line-height: var(--default-lh);
+    }
+    
+    a {
+        text-decoration: none;
+    }
+    
+    ul,
+    ol {
+        list-style: none;
+    }
+    
+    section {
+        padding: 5em 2em;
+    }
+    
+    img {
+        display: block;
+        max-width: 100%;
+    }
+    
+    strong {
+        font-weight: var(--fw-bold);
+        color: var(--second-color);
+    }
+    /* ----------BUTTONS---------------- */
+    
+    .btn {
+        display: inline-block;
+        padding: 0.5em 1.5em;
+        background-color: var(--main-color);
+        color: var(--second-color);
+        text-decoration: none;
+        text-transform: uppercase;
+        cursor: pointer;
+        font-size: 1em;
+        letter-spacing: 2px;
+        font-weight: var(--fw-bold);
+        transition: transform 0.2s ease-in-out;
+    }
+    
+    .btn:hover {
+        transform: scale(1.1);
+    }
+    
+    .btn:focus {
+        outline: 3px solid var(--main-color);
+        outline-offset: 3px;
+    }
+    /* -----------TYPOGRAPHY---------------------------------------- */
+    
+    h1,
+    h2,
+    h3 {
+        line-height: 1.1;
+        margin: 0;
+    }
+    
+    h1 {
+        font-size: var(--fs-h1);
+    }
+    
+    h2 {
+        font-size: var(--fs-h2);
+    }
+    
+    h3 {
+        font-size: var(--fs-h3);
+    }
+    
+    .section__title {
+        margin-bottom: 0.25rem;
+    }
+    
+    .section__title--intro {
+        font-weight: var(--fw-reg);
+    }
+    
+    .section__title--intro strong {
+        display: block;
+    }
+    
+    .section__subtitle {
+        font-size: var(--fs-h3);
+    }
+    
+    .section__subtitle--intro {
+        display: inline-block;
+    }
+    
+    .section__subtitle--intro,
+    .section__subtitle--about {
+        background-color: var(--main-color);
+        color: var(--color-dark);
+        font-family: var(--ff-primary);
+        padding: 0.5em 1em;
+    }
+    /*____________________________HEADER CSS__________________*/
+    
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        padding: 1em;
+    }
+    
+    .logo {
+        max-width: 150px;
+    }
+    
+    .nav {
+        position: fixed;
+        background-color: var(--color-dark);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 99;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.5, 0, 0.5, 1);
+    }
+    
+    .nav__list {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    
+    .nav__link {
+        color: var(--color-white);
+        font-weight: var(--fw-semibold);
+        font-size: var(--fs-h3);
+    }
+    
+    .nav__link:hover {
+        color: var(--second-color);
+    }
+    
+    .hamburger {
+        display: block;
+        position: relative;
+    }
+    
+    .hamburger,
+    .hamburger::before,
+    .hamburger::after {
+        background-color: var(--second-color);
+        width: 2em;
+        height: 3px;
+        border-radius: 1em;
+        transition: transform 0.4s ease-in-out;
+    }
+    
+    .hamburger::before,
+    .hamburger::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+    
+    .hamburger::before {
+        top: 6px;
+    }
+    
+    .hamburger::after {
+        bottom: 6px;
+    }
+    
+    .nav-toggle {
+        background-color: transparent;
+        border: 0;
+        outline: none;
+        cursor: pointer;
+        position: absolute;
+        right: 1em;
+        top: 1em;
+        z-index: 999;
+    }
+    
+    .nav-open .nav {
+        transform: translateX(0);
+    }
+    
+    .nav-open .nav-toggle {
+        position: fixed;
+    }
+    
+    .nav-open .hamburger::before {
+        transform: rotate(90deg) translateX(-6px);
+    }
+    
+    .nav-open .hamburger {
+        transform: rotate(45deg);
+    }
+    
+    .nav-open .hamburger::after {
+        opacity: 0;
+    }
+    /*______________________________________________________ */
+    /* -----------INTRO CSS------------- */
+    
+    .intro {
+        position: relative;
+    }
+    
+    @media (min-width:600px) {
+        .intro {
+            display: grid;
+            width: min-content;
+            grid-column-gap: 1em;
+            grid-template-areas: "img title" "img subtitle";
+            grid-template-columns: min-content max-content;
+            margin: 0 auto;
+        }
+        .intro__image {
+            grid-area: img;
+            min-width: 250px;
+            position: relative;
+            z-index: 2;
+            box-shadow: var(--boxShadow);
+        }
+        .section__subtitle--intro {
+            align-self: start;
+            grid-column: -1/1;
+            grid-row: 2;
+            text-align: right;
+            position: relative;
+            left: -2em;
+            width: calc(100% + 2em);
+        }
+    }
+    /* ---------------SERVICES CSS----------------------------- */
+    
+    .my-services {
+        background-color: var(--color-dark);
+        color: var(--color-white);
+        background-image: url(../images/services-bg.jpg);
+        background-size: cover;
+        background-blend-mode: overlay;
+        text-align: center;
+    }
+    
+    .section__title--service {
+        color: var(--second-color);
+        position: relative;
+    }
+    
+    .section__title--service::after {
+        content: "";
+        display: block;
+        width: 3em;
+        height: 2px;
+        margin: 0.5em auto 1em;
+        background-color: var(--color-white);
+        opacity: 0.4;
+    }
+    
+    .services-all {
+        margin-bottom: 3em;
+    }
+    
+    .service-item {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .service-item__intro {
+        color: var(--main-color);
+    }
+    
+    @media (min-width:800px) {
+        .services-all {
+            display: flex;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    /* -----------ABOUT ME-------------- */
+    
+    .about-me {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    
+    .about-me__image {
+        box-shadow: var(--boxShadow);
+    }
+    
+    .section__title--about {
+        color: var(--second-color);
+    }
+    
+    @media (min-width:600px) {
+        .about-me {
+            display: grid;
+            grid-template-columns: 1fr 250px;
+            grid-template-areas: "title img" "subtitle img" "body img";
+            grid-column-gap: 2em;
+        }
+        .about-me__image {
+            grid-area: img;
+            position: relative;
+            z-index: 2;
+        }
+        .section__title--about {
+            grid-area: title;
+        }
+        .section__subtitle--about {
+            grid-area: subtitle;
+            grid-column: 1/-1;
+            grid-row: 2;
+            position: relative;
+            left: -2em;
+            width: calc(100% + 4em);
+            padding-left: 2em;
+            padding-right: calc(250px + 2em);
+        }
+        .about-me__body {
+            grid-area: body;
+        }
+    }
+    /* ------------------WORK CSS----------------------- */
+    
+    .my-work {
+        background-color: var(--color-dark);
+        color: var(--color-white);
+    }
+    
+    .section__title--work {
+        color: var(--second-color);
+    }
+    
+    .section__subtitle--work {
+        color: var(--main-color);
+    }
+    
+    .portfolio {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    
+    .portfolio__image {
+        transition: transform 0.8s cubic-bezier(0.5, 0, 0.5, 1), opacity 0.3s linear;
+    }
+    
+    .portfolio__item {
+        background-color: var(--main-color);
+        overflow: hidden;
+    }
+    
+    .portfolio__item:focus {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .portfolio__item:focus,
+    .portfolio__image:hover.portfolio__image {
+        transform: scale(1.2);
+        opacity: 0.5;
+    }
+    /* ------------------FOOTER CSS----------------------- */
+    
+    .footer {
+        background-color: var(--color-black);
+        color: var(--main-color);
+        text-align: center;
+        padding: 1em 0;
+    }
+    
+    .social-list__item:hover {
+        opacity: 0.7;
+    }
+    
+    .social-list__link,
+    .footer__link {
+        color: var(--second-color);
+    }
+    
+    .footer__link:hover {
+        opacity: 0.7;
+        text-decoration: underline;
+    }
+    
+    .social-list {
+        display: flex;
+        justify-content: center;
+        margin: 2em 0;
+        padding: 0;
+    }
+    
+    .social-list__item {
+        margin: 0 0.5rem;
+    }
+    /*_____________________PORTFOLIO ITEM CSS____________ */
+    
+    .portfolio-item-individual {
+        padding: 2em;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-column-gap: 1em;
+    }
+    
+    @media (min-width:600px) {
+        .portfolio-item-individual {
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: 1.5em;
+        }
+    }
